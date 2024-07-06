@@ -6,7 +6,7 @@
 
     <groupId>org.springframework</groupId>
     <artifactId>spring-product-system</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
