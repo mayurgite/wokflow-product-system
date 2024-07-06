@@ -50,4 +50,5 @@ jobs:
         git tag ${{inputs.tag_version}}
         git push --tags
         mvn versions:set -DnewVersion=${{inputs.new_pom_version}}
+        git push
         echo 'Ended git tasks'
