@@ -47,6 +47,6 @@ jobs:
         git config user.name "mayurgite"
         git config user.email "mayurgite.it@gmail.com"
         git status
-        git tag ${tag_version} && git push --tags
-        mvn versions:set -DnewVersion=${new_pom_version}
+        git tag ${{inputs.tag_version}} && git push --tags
+        mvn versions:set -DnewVersion=${{inputs.new_pom_version}}
         echo 'Ended git tasks'
