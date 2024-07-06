@@ -10,7 +10,7 @@ on:
     inputs:
       new_pom_version:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'New pom version'
         # Default value if no value is explicitly provided
         default: '0.0.1-SNAPSHOT'
         # Input has to be provided for the workflow to run
@@ -19,7 +19,7 @@ on:
         type: string
       tag_version:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'New tag version'
         # Default value if no value is explicitly provided
         default: 'v25.1.1'
         # Input has to be provided for the workflow to run
@@ -47,6 +47,7 @@ jobs:
         git config user.name "mayurgite"
         git config user.email "mayurgite.it@gmail.com"
         git status
-        git tag ${{inputs.tag_version}} && git push --tags
+        git tag ${{inputs.tag_version}}
+        git push --tags
         mvn versions:set -DnewVersion=${{inputs.new_pom_version}}
         echo 'Ended git tasks'
