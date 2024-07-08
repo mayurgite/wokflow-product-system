@@ -53,8 +53,8 @@ jobs:
         git config user.name "mayurgite"
         git config user.email "mayurgite.it@gmail.com"
         git status
-        git tag ${{inputs.tag_version}}
-        git push --tags
+        # git tag ${{inputs.tag_version}}
+        # git push --tags
         mvn versions:set -DnewVersion=${{inputs.new_pom_version}}
         git add -u
         git commit -m "Updated pom version to ${{inputs.new_pom_version}}"
