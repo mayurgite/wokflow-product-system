@@ -50,8 +50,8 @@ jobs:
         # git tag ${{inputs.tag_version}}
         # git push --tags
         mvn versions:set -DnewVersion=${{inputs.new_pom_version}}
-        #find ./ -type f -exec sed -i 's/mayur/gite/g' {} \;
+        find ./ -type f -exec sed -i 's/mayur/gite/g' {} \;
         #git add -u
-        git commit -m "Updated pom version to ${{inputs.new_pom_version}}"
+        git commit -a -m "Updated pom version to ${{inputs.new_pom_version}}"
         git push
         echo 'Ended git tasks'
