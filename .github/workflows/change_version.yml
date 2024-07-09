@@ -58,7 +58,7 @@ jobs:
         mvn versions:set -DnewVersion=${{inputs.new_pom_version}}
         #find ./ -type f -exec sed -i 's/supernova/magicGaana/g' {} \;
         #git add -u
-        sed -i 's/${{inputs.current_version}}/${{inputs.new_pom_version}}/g' src/main/resources/application.properties
+        sed -i 's/name: ${{inputs.current_version}}/name: ${{inputs.new_pom_version}}/g' src/main/resources/application.properties
         git commit -a -m "Updated pom version to ${{inputs.new_pom_version}}"
         git push
         echo 'Ended git tasks'
