@@ -8,20 +8,26 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      new_pom_version:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'New pom version'
+      current_version:
+        description: 'Current release version'
         # Default value if no value is explicitly provided
-        default: '0.0.1-SNAPSHOT'
+        #default: '0.0.1-SNAPSHOT'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string  
+      new_pom_version:
+        description: 'New release version'
+        # Default value if no value is explicitly provided
+        #default: '0.0.1-SNAPSHOT'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
         type: string
       tag_version:
-        # Friendly description to be shown in the UI instead of 'name'
         description: 'New tag version'
         # Default value if no value is explicitly provided
-        default: 'v25.1.1'
+        #default: 'v25.1.1'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
@@ -52,7 +58,7 @@ jobs:
         mvn versions:set -DnewVersion=${{inputs.new_pom_version}}
         #find ./ -type f -exec sed -i 's/supernova/magicGaana/g' {} \;
         #git add -u
-        sed -i 's/supernova/magicGaana/g' src/main/resources/application.properties
+        sed -i 's/${{inputs.current_version}}/${{inputs.new_pom_version}}/g' src/main/resources/application.properties
         git commit -a -m "Updated pom version to ${{inputs.new_pom_version}}"
         git push
         echo 'Ended git tasks'
